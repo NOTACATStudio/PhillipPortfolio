@@ -1,0 +1,41 @@
+﻿@model PhillipPortfolio.Models.GalleryModel
+
+<div class="content-wrapper">
+    <hgroup class="title">
+        <div>
+            <div style="float: left;">
+                <h1>@ViewBag.Title</h1>
+            </div>
+            <div style="float: right;">
+                <h2>@ViewBag.Message</h2>
+            </div>
+        </div>
+    </hgroup>
+    <p>
+    </p>
+</div>
+
+<div style="clear: both">
+    <ul id="gallery">
+        @foreach (var image in Model.Images)
+        {
+            <li>
+                <img src="@image"/></li>
+        }
+    </ul>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#gallery").galleryView(
+            {
+                panel_scale: "fit",
+                frame_scale: "fit",
+                panel_width: 960,
+                panel_height: 600,
+                frame_width: 80,
+                frame_height: 50,
+                panel_animation: "crossfade",
+                transition_speed: 1750
+            });
+    });
+</script>
