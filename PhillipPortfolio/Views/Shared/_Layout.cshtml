@@ -6,11 +6,9 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
     @Styles.Render("~/Content/css")
-@*    @Styles.Render("~/Content/colorboxcss")*@
     @Styles.Render("~/Content/galleryviewcss")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
-@*    @Scripts.Render("~/bundles/colorbox")*@
     @Scripts.Render("~/bundles/galleryview")
 </head>
 <body>
@@ -23,7 +21,7 @@
                         <li>@Html.ActionLink("Models", "Models", "Home")</li>
                         <li>@Html.ActionLink("Lighting", "Lighting", "Home")</li>
                         <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Resume", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Resume", "Resume", "Home")</li>
                     </ul>
                 </nav>
             </div>

@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Net.Mime;
 using System.Web.Mvc;
 using System.Linq;
 using PhillipPortfolio.Models;
@@ -14,9 +15,9 @@ namespace PhillipPortfolio.Controllers
 
         public ActionResult Stamping()
         {
-            var stampingImages = Directory.GetFiles(Server.MapPath(@"~/Images/stamping")).Select(x => string.Format("/Images/stamping/{0}", x.Split('\\').Last())).ToList();
+            var images = Directory.GetFiles(Server.MapPath(@"~/Images/stamping")).Select(x => string.Format("/Images/stamping/{0}", x.Split('\\').Last())).ToList();
             var galleryModel = new GalleryModel();
-            galleryModel.Images = stampingImages;
+            galleryModel.Images = images;
             return View(galleryModel);
         }
 
@@ -25,26 +26,33 @@ namespace PhillipPortfolio.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Resume()
         {
             return View();
         }
 
         public ActionResult Models()
         {
-            var stampingImages = Directory.GetFiles(Server.MapPath(@"~/Images/models")).Select(x => string.Format("/Images/models/{0}", x.Split('\\').Last())).ToList();
+            var images = Directory.GetFiles(Server.MapPath(@"~/Images/models")).Select(x => string.Format("/Images/models/{0}", x.Split('\\').Last())).ToList();
             
             var galleryModel = new GalleryModel();
-            galleryModel.Images = stampingImages;
+            galleryModel.Images = images;
             return View(galleryModel);
         }
 
         public ActionResult Lighting()
         {
-            var stampingImages = Directory.GetFiles(Server.MapPath(@"~/Images/lighting")).Select(x => string.Format("/Images/lighting/{0}", x.Split('\\').Last())).ToList();
+            var images = Directory.GetFiles(Server.MapPath(@"~/Images/lighting")).Select(x => string.Format("/Images/lighting/{0}", x.Split('\\').Last())).ToList();
             var galleryModel = new GalleryModel();
-            galleryModel.Images = stampingImages;
+            galleryModel.Images = images;
             return View(galleryModel);
+        }
+
+        public ActionResult DownloadResume()
+        {
+            var resumePath = Url.Content("~/Content/resume_phillipbailey.pdf");
+
+            return File(resumePath, "application/pdf", "resume_phillipbailey.pdf");
         }
     }
 }
